@@ -49,13 +49,13 @@ const config: HardhatUserConfig = {
     //   accounts: [`0x${KEY}`]      
     // },
     sepolia: {
-      url: 'https://eth-sepolia.g.alchemy.com/v2/qdH89-Ntk7QWTUUvfdWXrYh39e0nKJrw',
+      url: 'https://rpc-sepolia.rockx.com',
       chainId: 11155111,
       accounts: [`0x${KEY}`]      
     },
   },
   etherscan: {
-    apiKey: "qdH89-Ntk7QWTUUvfdWXrYh39e0nKJrw",
+    apiKey: "71RBGRQ58D8DIBV2IVGNSSNBNZABQPWDS8",
   },
 }
 
