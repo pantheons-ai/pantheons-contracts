@@ -1,0 +1,10 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "Metadata",
+  "sourceName": "@story-protocol/protocol-periphery/contracts/lib/Metadata.sol",
+  "abi": [],
+  "bytecode": "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea264697066735822122041aa49b0461e9e65e6df719e734e80dfaf6f403958dd39371e723473c471c5b964736f6c63430008170033",
+  "deployedBytecode": "0x600080fdfea264697066735822122041aa49b0461e9e65e6df719e734e80dfaf6f403958dd39371e723473c471c5b964736f6c63430008170033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

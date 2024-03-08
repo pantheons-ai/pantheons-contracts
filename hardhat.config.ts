@@ -1,6 +1,7 @@
 import { HardhatUserConfig, task } from 'hardhat/config'
 import '@nomicfoundation/hardhat-toolbox'
 import '@nomiclabs/hardhat-ethers'
+require("@nomicfoundation/hardhat-chai-matchers");
 require("@nomiclabs/hardhat-etherscan");
 import dotenv from 'dotenv'
 
@@ -16,12 +17,13 @@ dotenv.config()
 const { KEY } = process.env;
 const config: HardhatUserConfig = {
   solidity: {
-    version: "0.8.20",
+    version: "0.8.23",
     settings: {
       optimizer: {
         enabled: true,
         runs: 200
-      }
+      },
+      viaIR: true
     }
   },
   networks: {
@@ -50,6 +52,8 @@ const config: HardhatUserConfig = {
     // },
     sepolia: {
       url: 'https://rpc-sepolia.rockx.com',
+      throwOnTransactionFailures: true,
+      throwOnCallFailures: true,
       chainId: 11155111,
       accounts: [`0x${KEY}`]      
     },

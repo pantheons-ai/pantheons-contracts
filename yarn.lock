@@ -850,6 +850,21 @@
     table "^6.8.0"
     undici "^5.14.0"
 
+"@nomiclabs/hardhat-waffle@^2.0.6":
+  version "2.0.6"
+  resolved "https://registry.npmmirror.com/@nomiclabs/hardhat-waffle/-/hardhat-waffle-2.0.6.tgz#d11cb063a5f61a77806053e54009c40ddee49a54"
+  integrity sha512-+Wz0hwmJGSI17B+BhU/qFRZ1l6/xMW82QGXE/Gi+WTmwgJrQefuBs1lIf7hzQ1hLk6hpkvb/zwcNkpVKRYTQYg==
+
+"@openzeppelin/contracts-upgradeable@5.0.1":
+  version "5.0.1"
+  resolved "https://registry.npmmirror.com/@openzeppelin/contracts-upgradeable/-/contracts-upgradeable-5.0.1.tgz#ebc163cbed2de6b8b69bff628261d18deb912a81"
+  integrity sha512-MvaLoPnVcoZr/qqZP+4cl9piuR4gg0iIGgxVSZ/AL1iId3M6IdEHzz9Naw5Lirl4KKBI6ciTVnX07yL4dOMIJg==
+
+"@openzeppelin/contracts@5.0.1":
+  version "5.0.1"
+  resolved "https://registry.npmmirror.com/@openzeppelin/contracts/-/contracts-5.0.1.tgz#93da90fc209a0a4ff09c1deb037fbb35e4020890"
+  integrity sha512-yQJaT5HDp9hYOOp4jTYxMsR02gdFZFXhewX5HW9Jo4fsqSVqqyIO/xTHdWDaKX5a3pv1txmf076Lziz+sO7L1w==
+
 "@openzeppelin/contracts@^4.7.2":
   version "4.9.5"
   resolved "https://registry.npmmirror.com/@openzeppelin/contracts/-/contracts-4.9.5.tgz#1eed23d4844c861a1835b5d33507c1017fa98de8"
@@ -990,6 +1005,24 @@
   version "0.17.0"
   resolved "https://registry.npmmirror.com/@solidity-parser/parser/-/parser-0.17.0.tgz#52a2fcc97ff609f72011014e4c5b485ec52243ef"
   integrity sha512-Nko8R0/kUo391jsEHHxrGM07QFdnPGvlmox4rmH0kNiNAashItAilhy4Mv4pK5gQmW5f4sXAF58fwJbmlkGcVw==
+
+"@story-protocol/protocol-core@1.0.0-beta-rc6", "@story-protocol/protocol-core@^1.0.0-beta-rc6":
+  version "1.0.0-beta-rc6"
+  resolved "https://registry.npmmirror.com/@story-protocol/protocol-core/-/protocol-core-1.0.0-beta-rc6.tgz#be833ae95419340816c6f246c40654d0e8a649c0"
+  integrity sha512-2diMjDOpFuKcKZ7BQTdR0jb/W3Etob3cPkewteZvXgYwpLd0MpwPDkujPOM7KijYlp781kDx0ay8TqutgqH5QQ==
+  dependencies:
+    "@openzeppelin/contracts" "5.0.1"
+    "@openzeppelin/contracts-upgradeable" "5.0.1"
+    erc6551 "^0.3.1"
+
+"@story-protocol/protocol-periphery@^1.0.0-beta-rc3":
+  version "1.0.0-beta-rc3"
+  resolved "https://registry.npmmirror.com/@story-protocol/protocol-periphery/-/protocol-periphery-1.0.0-beta-rc3.tgz#0c829e22af2a65e9d1973df8ff7131d3b57484b0"
+  integrity sha512-YZpOK8w+5i1k1EXrkC+nxcQ01YbWAQJytslDVsqoDp6Xc6clLC//L/5esKhC8DTRo8JjW4r+nFWyWFGJyhdxVg==
+  dependencies:
+    "@openzeppelin/contracts" "5.0.1"
+    "@openzeppelin/contracts-upgradeable" "5.0.1"
+    "@story-protocol/protocol-core" "1.0.0-beta-rc6"
 
 "@szmarczak/http-timer@^1.1.2":
   version "1.1.2"
@@ -2564,6 +2597,11 @@ env-paths@^2.2.0:
   version "2.2.1"
   resolved "https://registry.npmmirror.com/env-paths/-/env-paths-2.2.1.tgz#420399d416ce1fbe9bc0a07c62fa68d67fd0f8f2"
   integrity sha512-+h1lkLKhZMTYjog1VEpJNG7NZJWcuc2DDk/qsqSTRRCOXiLjeQ1d1/udrUGhqMxUgAlwKNZ0cf2uqan5GLuS2A==
+
+erc6551@^0.3.1:
+  version "0.3.1"
+  resolved "https://registry.npmmirror.com/erc6551/-/erc6551-0.3.1.tgz#f9ccc0901c210b0cc29c1c730398878319a1fd30"
+  integrity sha512-4+O7CJ5gn3/s2Mum1QiJDJUbGE1P1m0t3do2nnFAKWEXLubWfZjS12HqraUJ6Y6su3WJ8EqdWm0270gC0bqpCA==
 
 error-ex@^1.3.1:
   version "1.3.2"
