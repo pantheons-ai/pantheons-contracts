@@ -14,7 +14,7 @@ dotenv.config()
 //   }
 // }
 
-const { KEY } = process.env;
+const { KEY1, KEY2 } = process.env;
 const config: HardhatUserConfig = {
   solidity: {
     version: "0.8.23",
@@ -55,7 +55,7 @@ const config: HardhatUserConfig = {
       throwOnTransactionFailures: true,
       throwOnCallFailures: true,
       chainId: 11155111,
-      accounts: [`0x${KEY}`]      
+      accounts: [`0x${KEY1}`, `0x${KEY2}`]      
     },
   },
   etherscan: {

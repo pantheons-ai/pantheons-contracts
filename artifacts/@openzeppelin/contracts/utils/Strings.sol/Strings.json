@@ -2,9 +2,26 @@
   "_format": "hh-sol-artifact-1",
   "contractName": "Strings",
   "sourceName": "@openzeppelin/contracts/utils/Strings.sol",
-  "abi": [],
-  "bytecode": "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea2646970667358221220aa559bf34f5833cabd1ab5835aa4d95009d1f2bd133deca8a40e07c95dca920364736f6c63430008170033",
-  "deployedBytecode": "0x600080fdfea2646970667358221220aa559bf34f5833cabd1ab5835aa4d95009d1f2bd133deca8a40e07c95dca920364736f6c63430008170033",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "length",
+          "type": "uint256"
+        }
+      ],
+      "name": "StringsInsufficientHexLength",
+      "type": "error"
+    }
+  ],
+  "bytecode": "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea264697066735822122016da28c2a8b00bcf9f7bf5d3956014dad14f366ae081934cbc51799ff644cdc064736f6c63430008170033",
+  "deployedBytecode": "0x600080fdfea264697066735822122016da28c2a8b00bcf9f7bf5d3956014dad14f366ae081934cbc51799ff644cdc064736f6c63430008170033",
   "linkReferences": {},
   "deployedLinkReferences": {}
 }

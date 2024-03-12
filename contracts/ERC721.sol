@@ -22,14 +22,14 @@ contract StoryProtocolToken is Ownable, ERC721, IStoryProtocolToken {
     // Used for generating unique token IDs
     uint256 private _tokenIdCounter;
 
-    constructor(string memory name_, string memory symbol_) ERC721(name_, symbol_) {
+    constructor(string memory name_, string memory symbol_) ERC721(name_, symbol_) Ownable(msg.sender){
         _name = name_;
         _symbol = symbol_;
         _tokenIdCounter = 0;
     }
 
     /// @notice Mints a new token, optionally providing additional metadata.
-    function mint(address to, bytes memory data) external override returns (uint256) {
+    function mint(address to, bytes memory) external override returns (uint256) {
         _tokenIdCounter += 1;
         uint256 newTokenId = _tokenIdCounter;
 

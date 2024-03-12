@@ -3,11 +3,12 @@ pragma solidity ^0.8.23;
 
 import {IERC721Receiver} from "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 import {IERC1155Receiver} from "@openzeppelin/contracts/token/ERC1155/IERC1155Receiver.sol";
-import {IERC165} from "@openzeppelin/contracts/utils/introspection/IERC165.sol";
+import {IERC165} from "@openzeppelin/contracts/interfaces/IERC165.sol";
 import {Ownable} from "@openzeppelin/contracts/access/Ownable.sol";
 import {Strings} from "@openzeppelin/contracts/utils/Strings.sol";
 import {ERC404Instance} from "./ERC404Instance.sol";
 import {IStoryProtocolGateway} from "@story-protocol/protocol-periphery/contracts/interfaces/IStoryProtocolGateway.sol";
+import {IPAssetRegistry} from "@story-protocol/protocol-core/contracts/registries/IPAssetRegistry.sol";
 import {SPG} from "@story-protocol/protocol-periphery/contracts/lib/SPG.sol";
 import {Metadata} from "@story-protocol/protocol-periphery/contracts/lib/Metadata.sol";
 import {StoryProtocolToken} from "./ERC721.sol";
@@ -31,11 +32,15 @@ contract Pantheon is Ownable, IERC165, IERC1271, IERC721Receiver, IERC1155Receiv
     event WhitelistChanged(address indexed account, bool isWhitelisted);
     event URIUpdated(string newURI);
 
-    constructor(string memory uri_, address spg_, uint256 policyId_) Ownable() {
+    constructor(string memory uri_, address spg_, address registry_, uint256 policyId_) Ownable(msg.sender) {
         uri = uri_;
         _whitelist[msg.sender] = true;
         spg = IStoryProtocolGateway(spg_);
+        // create story protocol nft contract
         StoryProtocolToken spgNFT = new StoryProtocolToken("spgNFT", "SNFT");
+        IPAssetRegistry ipaRegistry = IPAssetRegistry(registry_);
+        // approve ipa registry for spg_
+        ipaRegistry.setApprovalForAll(spg_, true);
         NFT_ADDRESS = address(spgNFT);
         POLICY_ID = policyId_;
     }
@@ -61,6 +66,7 @@ contract Pantheon is Ownable, IERC165, IERC1271, IERC721Receiver, IERC1155Receiv
         require(nftAttributeKeys.length == nftAttributeValues.length, "NFT attributes length mismatch");
         require(ipAttributeKeys.length == ipAttributeValues.length, "IP attributes length mismatch");
 
+        // construct nft attributes
         Metadata.Attribute[] memory nftAttributes = new Metadata.Attribute[](nftAttributeKeys.length);
         for (uint i = 0; i < nftAttributeKeys.length; i++) {
             nftAttributes[i] = Metadata.Attribute({
@@ -69,6 +75,7 @@ contract Pantheon is Ownable, IERC165, IERC1271, IERC721Receiver, IERC1155Receiv
             });
         }
 
+        // construct ip attributes
         Metadata.Attribute[] memory ipAttributes = new Metadata.Attribute[](ipAttributeKeys.length);
         for (uint i = 0; i < ipAttributeKeys.length; i++) {
             ipAttributes[i] = Metadata.Attribute({
@@ -77,6 +84,7 @@ contract Pantheon is Ownable, IERC165, IERC1271, IERC721Receiver, IERC1155Receiv
             });
         }
 
+        // construct nft metadata
         bytes memory nftMetadata = abi.encode(
             name_,
             nftDescription,
@@ -85,6 +93,7 @@ contract Pantheon is Ownable, IERC165, IERC1271, IERC721Receiver, IERC1155Receiv
             nftAttributes
         );
         
+        // construct ip metadata
         Metadata.IPMetadata memory ipMetadata = Metadata.IPMetadata({
             name: ipName_,
             hash: ipHash,
@@ -92,12 +101,14 @@ contract Pantheon is Ownable, IERC165, IERC1271, IERC721Receiver, IERC1155Receiv
             customMetadata: ipAttributes
         });
 
+        // construct spg signature
         SPG.Signature memory signature = SPG.Signature({
             signer: address(this),
             deadline: block.timestamp + 1000,
             signature: ""
         });
         
+        // mint and register ip
         try spg.mintAndRegisterIpWithSig(
             POLICY_ID,
             NFT_ADDRESS,
@@ -108,86 +119,11 @@ contract Pantheon is Ownable, IERC165, IERC1271, IERC721Receiver, IERC1155Receiv
             emit ERC404Created(id, address(erc404Instances[id]), _tokenId, _ipId);
         } catch Error(string memory reason) {
             revert(reason);
-        } catch (bytes memory lowLevelData) {
+        } catch (bytes memory) {
             revert("mintAndRegisterIpWithSig failed without a reason");
         }
         id++;
     }
-
-    // function register(
-    //     string calldata nftName,
-    //     string calldata nftDescription,
-    //     string calldata nftUrl,
-    //     string calldata nftImage,
-    //     string[] calldata nftAttributeKeys,
-    //     string[] calldata nftAttributeValues,
-    //     string calldata ipName,
-    //     bytes32 ipHash,
-    //     string calldata ipUrl,
-    //     string[] calldata ipAttributeKeys,
-    //     string[] calldata ipAttributeValues
-    // ) internal returns (uint256 tokenId, address ipId) {
-    //     require(nftAttributeKeys.length == nftAttributeValues.length, "NFT attributes length mismatch");
-    //     require(ipAttributeKeys.length == ipAttributeValues.length, "IP attributes length mismatch");
-
-    //     // 构建NFT属性数组
-    //     Metadata.Attribute[] memory nftAttributes = new Metadata.Attribute[](nftAttributeKeys.length);
-    //     for (uint i = 0; i < nftAttributeKeys.length; i++) {
-    //         nftAttributes[i] = Metadata.Attribute({
-    //             key: nftAttributeKeys[i],
-    //             value: nftAttributeValues[i]
-    //         });
-    //     }
-
-    //     // 构建IP属性数组
-    //     Metadata.Attribute[] memory ipAttributes = new Metadata.Attribute[](ipAttributeKeys.length);
-    //     for (uint i = 0; i < ipAttributeKeys.length; i++) {
-    //         ipAttributes[i] = Metadata.Attribute({
-    //             key: ipAttributeKeys[i],
-    //             value: ipAttributeValues[i]
-    //         });
-    //     }
-
-    //     // 编码NFT元数据
-    //     bytes memory nftMetadata = abi.encode(
-    //         nftName,
-    //         nftDescription,
-    //         nftUrl,
-    //         nftImage,
-    //         nftAttributes
-    //     );
-        
-    //     // 编码IP元数据
-    //     Metadata.IPMetadata memory ipMetadata = Metadata.IPMetadata({
-    //         name: ipName,
-    //         hash: ipHash,
-    //         url: ipUrl,
-    //         customMetadata: ipAttributes
-    //     });
-
-    //     SPG.Signature memory signature = SPG.Signature({
-    //         signer: address(this),
-    //         deadline: block.timestamp + 1000,
-    //         signature: ""
-    //     });
-        
-    //     try spg.mintAndRegisterIpWithSig(
-    //         POLICY_ID,
-    //         NFT_ADDRESS,
-    //         nftMetadata,
-    //         ipMetadata,
-    //         signature
-    //     ) returns (uint256 _tokenId, address _ipId) {
-    //         // 如果调用成功，返回结果
-    //         return (_tokenId, _ipId);
-    //     } catch Error(string memory reason) {
-    //         // 如果调用失败，并且有错误信息，将错误信息作为字符串抛出
-    //         revert(reason);
-    //     } catch (bytes memory /* lowLevelData */) {
-    //         // 如果调用失败，但没有提供错误信息，抛出通用错误
-    //         revert("mintAndRegisterIpWithSig failed without a reason");
-    //     }
-    // }
 
     function _setURI(string memory newURI) external onlyOwner() {
         uri = newURI;
@@ -229,7 +165,7 @@ contract Pantheon is Ownable, IERC165, IERC1271, IERC721Receiver, IERC1155Receiv
         return instance.getContribution(user);
     }
 
-    function isValidSignature(bytes32 _hash, bytes memory _signature) external view override returns (bytes4) {
+    function isValidSignature(bytes32, bytes memory) external pure override returns (bytes4) {
         return MAGICVALUE;
     }
 

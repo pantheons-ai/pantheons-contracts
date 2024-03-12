@@ -1,0 +1,50 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "AccessPermission",
+  "sourceName": "@story-protocol/protocol-core/contracts/lib/AccessPermission.sol",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "ABSTAIN",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "ALLOW",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "DENY",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608080604052346100195760bb908161001f823930815050f35b600080fdfe6080806040526004361015601257600080fd5b600090813560e01c9081630b5dfc3914606c57508063463ea0c11460565763a1731a2b14603e57600080fd5b80600319360112605357602090604051908152f35b80fd5b5080600319360112605357602060405160028152f35b90508160031936011260815780600160209252f35b5080fdfea2646970667358221220bf11c3c8bd9ebc2aacb04cdb9592a364cf7b369da6e1682953134fc64e98a43064736f6c63430008170033",
+  "deployedBytecode": "0x6080806040526004361015601257600080fd5b600090813560e01c9081630b5dfc3914606c57508063463ea0c11460565763a1731a2b14603e57600080fd5b80600319360112605357602090604051908152f35b80fd5b5080600319360112605357602060405160028152f35b90508160031936011260815780600160209252f35b5080fdfea2646970667358221220bf11c3c8bd9ebc2aacb04cdb9592a364cf7b369da6e1682953134fc64e98a43064736f6c63430008170033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

@@ -1,0 +1,10 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "Licensing",
+  "sourceName": "@story-protocol/protocol-core/contracts/lib/Licensing.sol",
+  "abi": [],
+  "bytecode": "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea2646970667358221220617c2b3c3d168e61037e6c07c2b1b3f58ba3eee3417c7a0fb55817a465cb9cf864736f6c63430008170033",
+  "deployedBytecode": "0x600080fdfea2646970667358221220617c2b3c3d168e61037e6c07c2b1b3f58ba3eee3417c7a0fb55817a465cb9cf864736f6c63430008170033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

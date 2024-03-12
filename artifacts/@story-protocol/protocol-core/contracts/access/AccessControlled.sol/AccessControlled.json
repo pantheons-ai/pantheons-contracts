@@ -1,0 +1,42 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "AccessControlled",
+  "sourceName": "@story-protocol/protocol-core/contracts/access/AccessControlled.sol",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "AccessControlled__ZeroAddress",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ACCESS_CONTROLLER",
+      "outputs": [
+        {
+          "internalType": "contract IAccessController",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "IP_ACCOUNT_REGISTRY",
+      "outputs": [
+        {
+          "internalType": "contract IIPAccountRegistry",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

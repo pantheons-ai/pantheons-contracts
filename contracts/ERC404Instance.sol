@@ -19,7 +19,7 @@ contract ERC404Instance is Ownable, ERC404 {
         uint256 maxTotalSupplyERC721_,
         address initialMintRecipient_,
         string memory uri_
-    ) ERC404(name_, symbol_, decimals_) Ownable() {
+    ) ERC404(name_, symbol_, decimals_) Ownable(msg.sender) {
         uri = uri_;
         _setERC721TransferExempt(initialMintRecipient_, true);
         if (maxTotalSupplyERC721_ > 0) {

@@ -1,0 +1,24 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "GovernanceLib",
+  "sourceName": "@story-protocol/protocol-core/contracts/lib/GovernanceLib.sol",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "PROTOCOL_ADMIN",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608080604052346018576075908161001e823930815050f35b600080fdfe6080806040526004361015601257600080fd5b60003560e01c6394658d7e14602657600080fd5b6000366003190112603a5780600060209252f35b600080fdfea264697066735822122062ffc5920974b3d7d2a7ae258063bcbb35b3586b0d9ba955e717eed45a7d751164736f6c63430008170033",
+  "deployedBytecode": "0x6080806040526004361015601257600080fd5b60003560e01c6394658d7e14602657600080fd5b6000366003190112603a5780600060209252f35b600080fdfea264697066735822122062ffc5920974b3d7d2a7ae258063bcbb35b3586b0d9ba955e717eed45a7d751164736f6c63430008170033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}

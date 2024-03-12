@@ -1,0 +1,10 @@
+{
+  "_format": "hh-sol-artifact-1",
+  "contractName": "IP",
+  "sourceName": "@story-protocol/protocol-core/contracts/lib/IP.sol",
+  "abi": [],
+  "bytecode": "0x60808060405234601757603a9081601d823930815050f35b600080fdfe600080fdfea264697066735822122016d9413a9289259eec38f23aa6dfa1240a29043b8036db443d69a7b7aa2d538864736f6c63430008170033",
+  "deployedBytecode": "0x600080fdfea264697066735822122016d9413a9289259eec38f23aa6dfa1240a29043b8036db443d69a7b7aa2d538864736f6c63430008170033",
+  "linkReferences": {},
+  "deployedLinkReferences": {}
+}
