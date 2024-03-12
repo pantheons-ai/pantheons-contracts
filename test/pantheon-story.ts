@@ -20,6 +20,7 @@ describe("Pantheon Contract", () => {
   describe("ERC404 Instance Creation", () => {
     it("should allow creation of a new ERC404 instance", async () => {
       try {
+        const gasLimit = ethers.utils.hexlify(1000000);
         const tx = await pantheon.connect(owner).createERC404(
           "TestToken",
           "TTK",
@@ -35,7 +36,8 @@ describe("Pantheon Contract", () => {
           ethers.utils.formatBytes32String("IP Hash"),
           "IP URL",
           ["ipKey1", "ipKey2"],
-          ["ipValue1", "ipValue2"]
+          ["ipValue1", "ipValue2"],
+          { gasLimit: gasLimit }
         );
         const receipt = await tx.wait();
         const event = receipt.events?.find(e => e.event === "ERC404Created");

@@ -61,7 +61,6 @@ contract Pantheon is Ownable, IERC165, IERC1271, IERC721Receiver, IERC1155Receiv
         require(nftAttributeKeys.length == nftAttributeValues.length, "NFT attributes length mismatch");
         require(ipAttributeKeys.length == ipAttributeValues.length, "IP attributes length mismatch");
 
-        // 构建NFT属性数组
         Metadata.Attribute[] memory nftAttributes = new Metadata.Attribute[](nftAttributeKeys.length);
         for (uint i = 0; i < nftAttributeKeys.length; i++) {
             nftAttributes[i] = Metadata.Attribute({
@@ -70,7 +69,6 @@ contract Pantheon is Ownable, IERC165, IERC1271, IERC721Receiver, IERC1155Receiv
             });
         }
 
-        // 构建IP属性数组
         Metadata.Attribute[] memory ipAttributes = new Metadata.Attribute[](ipAttributeKeys.length);
         for (uint i = 0; i < ipAttributeKeys.length; i++) {
             ipAttributes[i] = Metadata.Attribute({
@@ -79,7 +77,6 @@ contract Pantheon is Ownable, IERC165, IERC1271, IERC721Receiver, IERC1155Receiv
             });
         }
 
-        // 编码NFT元数据
         bytes memory nftMetadata = abi.encode(
             name_,
             nftDescription,
@@ -88,7 +85,6 @@ contract Pantheon is Ownable, IERC165, IERC1271, IERC721Receiver, IERC1155Receiv
             nftAttributes
         );
         
-        // 编码IP元数据
         Metadata.IPMetadata memory ipMetadata = Metadata.IPMetadata({
             name: ipName_,
             hash: ipHash,
